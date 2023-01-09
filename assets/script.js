@@ -18,6 +18,8 @@ $(function () {
   })
 
 // this else if function sets the class for css stling. since the div ids are numbers they are used to compare to the current time using the operators > and ==. Depending on the current time the classes of past, present, and future will be added.
+
+
  
 timeRowEl = document.querySelectorAll('div[id]')
 
@@ -33,6 +35,8 @@ timeRowEl = document.querySelectorAll('div[id]')
       currentDiv.classList.add('past')
     }
   }
+
+
 
 
 // this for loop checks the keys in local storage which are parsed to numbers. if a key exists then the text area of the div with the corresponding "numerical" id will be updated.
