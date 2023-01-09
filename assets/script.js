@@ -10,7 +10,13 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   //this code selects all buttons. when clicked the function locates the sibling element and saves the text input in local storage. 
+
   var saveBtn = $('.btn.saveBtn');
+  var idHour = $('div').map(function(){
+    return this.id;
+  }).get();
+  var currentHour = dayjs().format('HH')
+  console.log(currentHour)
 
   saveBtn.click(function() {
     let taskInput = $(this).siblings('.description').val();
@@ -24,10 +30,28 @@ $(function () {
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
   //
+ 
+timeRowEl = document.querySelectorAll('div[id]')
+
+  for (i = 0; i < timeRowEl.length; i++) {
+    var currentDiv = timeRowEl[i]
+    if (currentDiv < currentHour) {
+      currentDiv.classList.add('future');
+    }
+    else if (currentDiv == currentHour) {
+      currentDiv.classList.add('present')
+    }
+    else {
+      currentDiv.classList.add('past')
+    }
+  }
+
+
+
+
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
 });
-6
