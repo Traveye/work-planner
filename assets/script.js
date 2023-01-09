@@ -12,16 +12,15 @@ $(function () {
   //this code selects all buttons. when clicked the function locates the sibling element and saves the text input in local storage. 
 
   var saveBtn = $('.btn.saveBtn');
-  var idHour = $('div').map(function(){
-    return this.id;
-  }).get();
   var currentHour = dayjs().format('HH')
   console.log(currentHour)
+
 
   saveBtn.click(function() {
     let taskInput = $(this).siblings('.description').val();
     let hourKey = $(this).closest('.row').attr('id');
-    localStorage.setItem(hourKey, taskInput);
+    let keyAsNumber = parseInt(hourKey, 10);
+    localStorage.setItem(keyAsNumber, taskInput);
 
   })
   // TODO: Add code to apply the past, present, or future class to each time
@@ -37,15 +36,12 @@ timeRowEl = document.querySelectorAll('div[id]')
     var currentDiv = timeRowEl[i]
     if (currentDiv.id > timeRowEl[i]) {
       currentDiv.classList.add('future');
-      console.log("here")
     }
     else if (currentDiv.id == timeRowEl[i]) {
       currentDiv.classList.add('present')
-      console.log("present")
     }
     else {
       currentDiv.classList.add('past')
-      console.log("last")
     }
   }
 
@@ -54,6 +50,13 @@ timeRowEl = document.querySelectorAll('div[id]')
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
 
+  for(i = 9; i < 18; i++) {
+    var newTask = localStorage.getItem(i);
+    document.getElementById(i).querySelector('textarea').textContent = newTask;
+  
+  }
+  
+  
 
 
 
@@ -63,9 +66,5 @@ var currentDate = dayjs().format('MMM D, YYYY');
 var currentDayEl = document.querySelector('#currentDay')
 
 currentDayEl.textContent = currentDate;
-
-
-
-
 
 });
