@@ -6,7 +6,6 @@ $(function () {
  
   var saveBtn = $('.btn.saveBtn');
   var currentHour = dayjs().format('HH')
-  console.log(currentHour)
 
 
   saveBtn.click(function() {
@@ -24,15 +23,20 @@ $(function () {
 timeRowEl = document.querySelectorAll('div[id]')
 
   for (i = 0; i < timeRowEl.length; i++) {
-    var currentDiv = timeRowEl[i]
-    if (currentDiv.id > timeRowEl[i]) {
+    var currentDiv = timeRowEl[i];
+    if (currentDiv.id > currentHour) {
       currentDiv.classList.add('future');
+      console.log(currentDiv.id + "1")
+      console.log(currentHour)
+      
     }
-    else if (currentDiv.id == timeRowEl[i]) {
+    else if (currentDiv.id == currentHour) {
       currentDiv.classList.add('present')
+      console.log(currentDiv.id + "2")
     }
     else {
       currentDiv.classList.add('past')
+      console.log(currentDiv.id + "3")
     }
   }
 
