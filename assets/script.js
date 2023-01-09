@@ -35,23 +35,37 @@ timeRowEl = document.querySelectorAll('div[id]')
 
   for (i = 0; i < timeRowEl.length; i++) {
     var currentDiv = timeRowEl[i]
-    if (currentDiv < currentHour) {
+    if (currentDiv.id > timeRowEl[i]) {
       currentDiv.classList.add('future');
+      console.log("here")
     }
-    else if (currentDiv == currentHour) {
+    else if (currentDiv.id == timeRowEl[i]) {
       currentDiv.classList.add('present')
+      console.log("present")
     }
     else {
       currentDiv.classList.add('past')
+      console.log("last")
     }
   }
-
-
 
 
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
+
+
+
+
   //
   // TODO: Add code to display the current date in the header of the page.
+var currentDate = dayjs().format('MMM D, YYYY');
+var currentDayEl = document.querySelector('#currentDay')
+
+currentDayEl.textContent = currentDate;
+
+
+
+
+
 });
