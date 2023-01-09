@@ -1,16 +1,9 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
+// line 3 was given - waits to run all code until page has fully rendered.
 
 $(function () {
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
-  //this code selects all buttons. when clicked the function locates the sibling element and saves the text input in local storage. 
 
+// this section adds an event listener to all the save buttons. once clicked the id associated with the clicked button is parsed into an integer and stored as the key in local storage with the submitted text as the value. 
+ 
   var saveBtn = $('.btn.saveBtn');
   var currentHour = dayjs().format('HH')
   console.log(currentHour)
@@ -23,12 +16,8 @@ $(function () {
     localStorage.setItem(keyAsNumber, taskInput);
 
   })
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
+
+// this else if function sets the class for css stling. since the div ids are numbers they are used to compare to the current time using the operators > and ==. Depending on the current time the classes of past, present, and future will be added.
  
 timeRowEl = document.querySelectorAll('div[id]')
 
@@ -46,22 +35,17 @@ timeRowEl = document.querySelectorAll('div[id]')
   }
 
 
-  // TODO: Add code to get any user input that was saved in localStorage and set
-  // the values of the corresponding textarea elements. HINT: How can the id
-  // attribute of each time-block be used to do this?
+// this for loop checks the keys in local storage which are parsed to numbers. if a key exists then the text area of the div with the corresponding "numerical" id will be updated.
 
   for(i = 9; i < 18; i++) {
     var newTask = localStorage.getItem(i);
     document.getElementById(i).querySelector('textarea').textContent = newTask;
   
   }
-  
-  
 
 
+//This code pulls the current day from day.js and modifies the text area of the header
 
-  //
-  // TODO: Add code to display the current date in the header of the page.
 var currentDate = dayjs().format('MMM D, YYYY');
 var currentDayEl = document.querySelector('#currentDay')
 
