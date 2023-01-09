@@ -19,6 +19,7 @@ $(function () {
 // this else if function sets the class for css stling. since the div ids are numbers they are used to compare to the current time using the operators > and ==. Depending on the current time the classes of past, present, and future will be added.
 
 
+
  
 timeRowEl = document.querySelectorAll('div[id]')
 
@@ -27,7 +28,7 @@ timeRowEl = document.querySelectorAll('div[id]')
     if (currentDiv.id > currentHour) {
       currentDiv.classList.add('future');
       console.log(currentDiv.id + "1")
-      console.log(currentHour)
+     
       
     }
     else if (currentDiv.id == currentHour) {
